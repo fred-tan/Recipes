@@ -60,6 +60,7 @@
     "react-dom": "*",
     "react-redux": "*",
     "redux": "*",
+    "slugify": "^1.4.6",
     "styled-components": "*"
   }
 }

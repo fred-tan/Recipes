@@ -2,14 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const Navigation = () => (
-<div className="navigation">
-  <a className="navigation-link active" href="#">Accueil</a>
-  <a className="navigation-link" href="#">Recette 1</a>
-  <a className="navigation-link" href="#">Recette 2</a>
-  <a className="navigation-link" href="#">Recette 3</a>
-  <a className="navigation-link" href="#">Recette 4</a>
-</div>
+const Navigation = ({list}) => (
+<nav className="navigation">
+    <a className="navigation-link active" href="/">Accueil</a>
+    {
+      list.map((navObject) => (
+        <a
+          key={navObject.id}
+          className="navigation-link"
+          href={navObject.slug}
+        >
+          {navObject.title}
+        </a>
+      ))
+    }
+  </nav>
 );
+
+Navigation.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 
 export default Navigation;

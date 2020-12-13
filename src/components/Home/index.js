@@ -2,49 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const Home =() => (
+const Home =({list}) => (
 <div className="home">
   <p>Bienvenue sur le site</p>
   <div className="cards-list">
-    <div className="card">
-      <img className="card-image" alt="illustration" src="https://images.pexels.com/photos/53483/strawberries-crepe-dessert-sweet-53483.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"/>
-      <div className="card-infos">
-      <h3 className="card-title" >Titre</h3>
-      <p className="card-difficulty" >Difficulte: Facile</p>
-      <a className="active" >Lien vers la recette</a>
-      </div>
-    </div>
-
-    <div className="card">
-      <img className="card-image" alt="illustration" src="https://images.pexels.com/photos/53483/strawberries-crepe-dessert-sweet-53483.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"/>
-      <div className="card-infos">
-      <h3 className="card-title" >Titre</h3>
-      <p className="card-difficulty" >Difficulte: Facile</p>
-      <a className="active" >Lien vers la recette</a>
-      </div>
-    </div>
-
-    <div className="card">
-      <img className="card-image" alt="illustration" src="https://images.pexels.com/photos/53483/strawberries-crepe-dessert-sweet-53483.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"/>
-      <div className="card-infos">
-      <h3 className="card-title" >Titre</h3>
-      <p className="card-difficulty" >Difficulte: Facile</p>
-      <a className="active" >Lien vers la recette</a>
-      </div>
-    </div>
-
-    <div className="card">
-      <img className="card-image" alt="illustration" src="https://images.pexels.com/photos/53483/strawberries-crepe-dessert-sweet-53483.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"/>
-      <div className="card-infos">
-      <h3 className="card-title" >Titre</h3>
-      <p className="card-difficulty" >Difficulte: Facile</p>
-      <a className="active" >Lien vers la recette</a>
-      </div>
-    </div>
+  {
+        list.map((cardObject) => (
+          <div key={cardObject.id} className="card">
+            <img className="card-image" alt="illustration" src={cardObject.image} />
+            <div className="card-infos">
+              <h3 className="card-title">{cardObject.title}</h3>
+              <p className="card-difficulty">Difficulté: {cardObject.difficulty}</p>
+              <a href={cardObject.slug} className="active">Lien vers la recette</a>
+            </div>
+          </div>
+        ))
+      } 
     
   
   </div>
 </div>
 );
+
+Home.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      difficulty: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
 
 export default Home;
