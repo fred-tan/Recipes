@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import {Route} from 'react-router-dom';
 import slugify from 'slugify';
 // == Import
 import Recipe from 'src/components/Recipe';
@@ -29,8 +30,15 @@ const App = () => (
     <Navigation list={navList}/>
     <main className="main">
     <header className="header">oRecipe</header>
+
+    <Route exact path="/">
     <Home list={homeData}/>
-    {/* <Recipe recipe={data[1]}/> */}
+    </Route>
+
+    <Route path="/recipe/:slug">
+    <Recipe recipe={data[1]}/>
+    </Route>
+    
     </main>
     
   </div>

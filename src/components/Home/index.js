@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
+import {Link} from 'react-router-dom';
 
 const Home =({list}) => (
 <div className="home">
@@ -13,7 +14,7 @@ const Home =({list}) => (
             <div className="card-infos">
               <h3 className="card-title">{cardObject.title}</h3>
               <p className="card-difficulty">Difficulté: {cardObject.difficulty}</p>
-              <a href={cardObject.slug} className="active">Lien vers la recette</a>
+              <Link to={cardObject.slug} className="active">Lien vers la recette</Link>
             </div>
           </div>
         ))
