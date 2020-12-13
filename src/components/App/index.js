@@ -35,10 +35,18 @@ const App = () => (
     <Home list={homeData}/>
     </Route>
 
-    <Route path="/recipe/:slug">
+   {/*  <Route path="/recipe/:slug">
     <Recipe recipe={data[1]}/>
-    </Route>
+    </Route> */}
     
+    <Route path="/recipe/:slug" 
+    render={(unTruc)=>{
+      console.log(unTruc);
+      return <Recipe recipe={data[1]}/>;
+    }}/>
+   
+
+
     </main>
     
   </div>
