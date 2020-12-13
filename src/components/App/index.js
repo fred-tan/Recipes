@@ -42,9 +42,18 @@ const App = () => (
     </Route> */}
     
     <Route path="/recipe/:slug" 
-    render={(unTruc)=>{
-      console.log(unTruc);
-      return <Recipe recipe={data[1]}/>;
+    render={(routerObject)=>{
+      console.log(routerObject);
+
+const {slug} = routerObject.match.params;
+
+const foundRecipe = data.find((recipeObject) => {
+  const recipeUrl = slugifyTitle(recipeObject.title);
+  const slugUrl = `/recipe/${slug}`
+  return recipeUrl === slugUrl;
+});
+
+      return <Recipe recipe={foundRecipe}/>;
     }}/>
    
 
