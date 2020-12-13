@@ -9,16 +9,18 @@ import Home from 'src/components/Home';
 import './styles.css';
 import data from '../../data';
 
+const slugifyTitle = (titre) => `/recipe/${slugify(titre, { lower: true })}`
+
 const navList = data.map((dataObject) => ({
   id: dataObject.id,
   title: dataObject.title,
-  slug: `/recipe/${slugify(dataObject.title, { lower: true })}`,
+  slug: slugifyTitle(dataObject.title),
 }));
 
 const homeData = data.map((dataObject) => ({
   id: dataObject.id,
   title: dataObject.title,
-  slug: `/recipe/${slugify(dataObject.title, { lower: true })}`,
+  slug: slugifyTitle(dataObject.title),
   image: dataObject.thumbnail,
   difficulty: dataObject.difficulty,
 }));
