@@ -3,7 +3,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import slugify from 'slugify';
 // == Import
-import Recipe from 'src/components/Recipe';
+import Recipe from 'src/containers/Recipe';
 import Navigation from 'src/containers/Navigation';
 import Home from 'src/containers/Home';
 import './styles.css';
@@ -23,29 +23,23 @@ const App = () => (
     <Home />
     </Route>
 
-   {/*  <Route path="/recipe/:slug">
-    <Recipe recipe={data[1]}/>
-    </Route> */}
-    
-    <Route path="/recipe/:slug" 
-    render={(routerObject)=>{
-      console.log(routerObject);
+    <Route path="/recipe/:slug" component={Recipe} />
 
-const {slug} = routerObject.match.params;
+      {/* <Route path="/recipe/:slug"
+        render={(routerObject) => {
+          console.log(routerObject);
 
-const foundRecipe = data.find((recipeObject) => {
-  const recipeUrl = slugifyTitle(recipeObject.title);
-  const slugUrl = `/recipe/${slug}`
-  return recipeUrl === slugUrl;
-});
+          const {slug} = routerObject.match.params;
 
-      return <Recipe recipe={foundRecipe}/>;
-    }}/>
-   
-
-
+          const foundRecipe = data.find((recipeObject) => {
+            const recipeUrl = slugifyTitle(recipeObject.title);
+            const slugUrl = `/recipe/${slug}`
+            return recipeUrl === slugUrl;
+          });
+          return <Recipe recipe={foundRecipe}/>;
+        }}
+      /> */}
     </main>
-    
   </div>
 );
 

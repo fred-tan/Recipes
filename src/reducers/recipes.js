@@ -40,4 +40,9 @@ export const getHomeCards = (recipes) => recipes.map((dataObject) => ({
   difficulty: dataObject.difficulty,
 }));
 
+export const findRecipeFromSlug = (recipes,url) => (
+
+recipes.find((recipeObject) => slugifyTitle(recipeObject.title) === url)
+);
+
 export default reducer;
