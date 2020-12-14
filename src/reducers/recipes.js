@@ -1,12 +1,17 @@
-import data from '../data';
+import {FETCH_RECIPES_SUCCESS} from '../actions/recipes';
 import slugify from 'slugify';
 
 const initialState = {
-  list: data,
+  list: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
 switch (action.type) {
+  case FETCH_RECIPES_SUCCESS:
+    return {
+      ...state,
+      list:[...action.payload],
+    };
     default:
       return state;
   }

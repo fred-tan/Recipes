@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route} from 'react-router-dom';
 
 // == Import
@@ -9,8 +9,10 @@ import Home from 'src/containers/Home';
 import './styles.css';
 
 // == Composant
-const App = () => (
-  <div className="app">
+const App = ( {fetchRecipes}) => {
+  useEffect(fetchRecipes, []);
+return(
+ <div className="app">
 
     <Navigation />
     <main className="main">
@@ -25,6 +27,6 @@ const App = () => (
     </main>
   </div>
 );
-
+}
 // == Export
 export default App;
