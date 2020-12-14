@@ -4,18 +4,14 @@ import {Route} from 'react-router-dom';
 import slugify from 'slugify';
 // == Import
 import Recipe from 'src/components/Recipe';
-import Navigation from 'src/components/Navigation';
+import Navigation from 'src/containers/Navigation';
 import Home from 'src/components/Home';
 import './styles.css';
 import data from '../../data';
 
 const slugifyTitle = (titre) => `/recipe/${slugify(titre, { lower: true })}`
 
-const navList = data.map((dataObject) => ({
-  id: dataObject.id,
-  title: dataObject.title,
-  slug: slugifyTitle(dataObject.title),
-}));
+
 
 const homeData = data.map((dataObject) => ({
   id: dataObject.id,
@@ -29,7 +25,7 @@ const homeData = data.map((dataObject) => ({
 const App = () => (
   <div className="app">
     
-    <Navigation list={navList}/>
+    <Navigation />
     <main className="main">
     <header className="header">oRecipe</header>
 
