@@ -1,16 +1,23 @@
-import {FETCH_RECIPES_SUCCESS} from '../actions/recipes';
+import {FETCH_RECIPES_SUCCESS, FETCH_RECIPES_ERROR} from '../actions/recipes';
 import slugify from 'slugify';
 
 const initialState = {
   list: [],
+  error:null,
 };
 
 const reducer = (state = initialState, action = {}) => {
 switch (action.type) {
+  case FETCH_RECIPES_ERROR:
+  return{
+    ...state,
+    error: 'Impossible de recuperer les recettes',
+  };
   case FETCH_RECIPES_SUCCESS:
     return {
       ...state,
       list:[...action.payload],
+      error: null,
     };
     default:
       return state;

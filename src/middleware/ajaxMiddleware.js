@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_RECIPES, fetchRecipesSuccess} from '../actions/recipes';
+import {FETCH_RECIPES, fetchRecipesSuccess, fetchRecipesError} from '../actions/recipes';
 
 export default (store) => (next) => (action) => {
 
@@ -22,7 +22,7 @@ dispatch(fetchRecipesSuccess(data));
 })
 
 .catch(()=>{
-
+dispatch(fetchRecipesError());
 });
 
 

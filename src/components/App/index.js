@@ -7,6 +7,7 @@ import Recipe from 'src/containers/Recipe';
 import Navigation from 'src/containers/Navigation';
 import Home from 'src/containers/Home';
 import './styles.css';
+import Error from 'src/containers/Error';
 
 // == Composant
 const App = ( {fetchRecipes}) => {
@@ -17,7 +18,7 @@ return(
     <Navigation />
     <main className="main">
     <header className="header">oRecipe</header>
-
+  <Error />
     <Route exact path="/">
     <Home />
     </Route>
