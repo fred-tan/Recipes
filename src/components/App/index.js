@@ -11,8 +11,13 @@ import './styles.css';
 import Error from 'src/containers/Error';
 
 // == Composant
-const App = ( {fetchRecipes}) => {
-  useEffect(fetchRecipes, []);
+const App = ( {fetchRecipes, checkAuth}) => {
+  
+  useEffect(() => {
+    checkAuth();
+    fetchRecipes();
+  }, []);
+
 return(
   <div className="app">
 
