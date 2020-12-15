@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {FETCH_RECIPES, fetchRecipesSuccess, fetchRecipesError} from '../actions/recipes';
-import { LOGIN_INPUT_SUBMIT } from '../actions/user-actions';
+import { LOGIN_INPUT_SUBMIT, loginSuccess, loginError } from '../actions/user-actions';
 export default (store) => (next) => (action) => {
 
 
@@ -37,9 +37,11 @@ dispatch(fetchRecipesError());
         .then((res)=> {
           const serverResponse = res.data;
           console.log(serverResponse);
+          dispatch(loginSuccess(serverResponse));
         })
         .catch((err) => {
           console.error(err);
+          dispatch(loginError());
         });
       break;
     default:
