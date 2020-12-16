@@ -2,4 +2,4 @@
 
 - Install dependencies : `yarn`
 - Run server : `yarn start`
-- Server : http://localhost:8080
+- Port : http://localhost:8080
