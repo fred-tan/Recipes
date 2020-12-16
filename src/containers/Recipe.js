@@ -6,7 +6,7 @@ import { findRecipeFromSlug} from '../reducers/recipes';
 const mapState = (state, ownProps) => {
   const { url } = ownProps.match;
   return ({
-    recipe: findRecipeFromSlug(state.recipes.list, url),
+    recipe: findRecipeFromSlug(state.recipes.list, url) || {},
   });
 };
 

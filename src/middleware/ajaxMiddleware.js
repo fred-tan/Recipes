@@ -1,10 +1,35 @@
 import axios from 'axios';
 import {FETCH_RECIPES, fetchRecipesSuccess, fetchRecipesError} from '../actions/recipes';
-import { LOGIN_INPUT_SUBMIT, loginSuccess, loginError, CHECK_AUTH } from '../actions/user-actions';
+import { 
+  LOGIN_INPUT_SUBMIT,
+  loginSuccess,
+  loginError,
+  CHECK_AUTH,
+  LOGIN_INPUT_LOGOUT,
+  logoutSuccess,
+  logoutError
+} from '../actions/user-actions';
+
 export default (store) => (next) => (action) => {
 next(action);
   const {dispatch} = store;
  switch (action.type) {
+case LOGIN_INPUT_LOGOUT:
+  axios ({
+method: 'post',
+url: 'http://localhost:3001/logout',
+withCredentials: true,
+  })
+  .then((res) =>{
+    const {data} =res;
+    console.log(data);
+    dispatch(logoutSuccess());
+  })
+  .catch((err) => {
+    console.error(err);
+    dispatch(logoutError());
+  });
+break;
  case CHECK_AUTH:
  axios({
    method: 'post',
@@ -13,7 +38,9 @@ next(action);
  })
  .then((res)=>{
 const {data} = res;
+if(data.logged){
 dispatch(loginSuccess(data));
+}
  })
  .catch((err)=>{
 console.error(err);

@@ -13,6 +13,9 @@ import './styles.css';
 
 // == Composant
 function Recipe({ recipe }) {
+  if (!recipe || !recipe.title) {
+  return <div>Loading</div>;
+}
   return (
     <div className="recipe">
       <Header

@@ -1,4 +1,4 @@
-import { LOGIN_INPUT_CHANGE, LOGIN_INPUT_SUBMIT,LOGIN_SUCCESS, LOGIN_ERROR } from '../actions/user-actions';
+import { LOGIN_INPUT_CHANGE, LOGIN_INPUT_SUBMIT,LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from '../actions/user-actions';
 
 const initialState = {
   loading: false,
@@ -11,12 +11,19 @@ const initialState = {
 
 const user = (state = initialState, action = {}) => {
   switch (action.type) {
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isLogged:false,
+        pseudo: '',
+        loggedMessage: '',
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
         isLogged: true,
-        psuedo: action.payload.pseudo,
+        pseudo: action.payload.pseudo,
         loggedMessage: `Bienvenue ${action.payload.pseudo}`,
       };
     case LOGIN_ERROR:
